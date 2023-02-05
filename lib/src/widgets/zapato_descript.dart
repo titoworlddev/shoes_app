@@ -4,7 +4,8 @@ class ZapatoDescripcion extends StatelessWidget {
   final String titulo;
   final String descripcion;
 
-  ZapatoDescripcion({
+  const ZapatoDescripcion({
+    super.key,
     required this.titulo,
     required this.descripcion,
   });
@@ -12,15 +13,24 @@ class ZapatoDescripcion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20,),
-          Text(titulo, style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),),
-          SizedBox(height: 20,),
-          Text(descripcion, style: TextStyle(color: Colors.black54, height: 1.6),),
-
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            titulo,
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            descripcion,
+            style: const TextStyle(color: Colors.black54, height: 1.6),
+          ),
         ],
       ),
     );

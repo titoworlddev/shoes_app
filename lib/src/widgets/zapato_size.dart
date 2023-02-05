@@ -8,7 +8,8 @@ import 'package:shoes_app/src/pages/zapato_desc_page.dart';
 class ZapatoSizePreview extends StatelessWidget {
   final bool fullScreen;
 
-  ZapatoSizePreview({
+  const ZapatoSizePreview({
+    super.key,
     this.fullScreen = false,
   });
 
@@ -17,35 +18,37 @@ class ZapatoSizePreview extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (!fullScreen) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ZapatoDescPage(),));
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ZapatoDescPage(),
+            ),
+          );
         }
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: (fullScreen) ? 5 : 30, 
-          vertical: (fullScreen) ? 0 : 5
-        ),
+            horizontal: (fullScreen) ? 5 : 30, vertical: (fullScreen) ? 0 : 5),
         child: Container(
           // margin: EdgeInsets.only(top: 20),
           width: double.infinity,
           height: (fullScreen) ? 390 : 420,
           decoration: BoxDecoration(
-            color: Color(0xffffcf53),
-            borderRadius: (!fullScreen) ? BorderRadius.circular(50)
-            : BorderRadius.only(
-              bottomLeft: Radius.circular(50),
-              bottomRight: Radius.circular(50),
-              topLeft: Radius.circular(40),
-              topRight: Radius.circular(40),
-            ),
+            color: const Color(0xffffcf53),
+            borderRadius: (!fullScreen)
+                ? BorderRadius.circular(50)
+                : const BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
           ),
           child: Column(
             children: [
               // Zapato con su sombra
               _ZapatoConSombra(),
 
-              if(!fullScreen)
-                _ZapatoTallas()
+              if (!fullScreen) _ZapatoTallas()
             ],
           ),
         ),
@@ -58,10 +61,10 @@ class _ZapatoTallas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
+        children: const [
           _TallaZapatoCaja(7),
           _TallaZapatoCaja(7.5),
           _TallaZapatoCaja(8),
@@ -77,7 +80,7 @@ class _ZapatoTallas extends StatelessWidget {
 class _TallaZapatoCaja extends StatelessWidget {
   final double numero;
 
-  _TallaZapatoCaja(this.numero);
+  const _TallaZapatoCaja(this.numero);
 
   @override
   Widget build(BuildContext context) {
@@ -92,11 +95,13 @@ class _TallaZapatoCaja extends StatelessWidget {
         width: 45,
         height: 45,
         decoration: BoxDecoration(
-            color: (numero == zapatoModel.talla) ? Color(0xffFF9F00) : Colors.white,
+            color: (numero == zapatoModel.talla)
+                ? const Color(0xffFF9F00)
+                : Colors.white,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               if (numero == zapatoModel.talla)
-                BoxShadow(
+                const BoxShadow(
                   color: Color(0xffFFA514),
                   blurRadius: 10,
                   spreadRadius: 2,
@@ -104,9 +109,11 @@ class _TallaZapatoCaja extends StatelessWidget {
                 )
             ]),
         child: Text(
-          '${numero.toString().replaceAll('.0', '')}',
+          numero.toString().replaceAll('.0', ''),
           style: TextStyle(
-              color: (numero == zapatoModel.talla) ? Colors.white : Color(0xffffcf53),
+              color: (numero == zapatoModel.talla)
+                  ? Colors.white
+                  : const Color(0xffffcf53),
               fontSize: 16,
               fontWeight: FontWeight.bold),
         ),
@@ -121,12 +128,11 @@ class _ZapatoConSombra extends StatefulWidget {
 }
 
 class __ZapatoConSombraState extends State<_ZapatoConSombra> {
-
   final imagenes = [
-    AssetImage('assets/imgs/verde.png'),
-    AssetImage('assets/imgs/amarillo.png'),
-    AssetImage('assets/imgs/azul.png'),
-    AssetImage('assets/imgs/negro.png'),
+    const AssetImage('assets/imgs/verde.png'),
+    const AssetImage('assets/imgs/amarillo.png'),
+    const AssetImage('assets/imgs/azul.png'),
+    const AssetImage('assets/imgs/negro.png'),
   ];
 
   // Para precargar las imagenes usar este metodo
@@ -141,7 +147,7 @@ class __ZapatoConSombraState extends State<_ZapatoConSombra> {
     final zapatoModel = Provider.of<ZapatoModel>(context);
 
     return Padding(
-      padding: EdgeInsets.all(50),
+      padding: const EdgeInsets.all(50),
       child: Stack(
         children: [
           Positioned(right: 0, bottom: 0, child: _ZapatoSombra()),
@@ -163,8 +169,11 @@ class _ZapatoSombra extends StatelessWidget {
         width: 230,
         height: 120,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            boxShadow: [BoxShadow(color: Color(0xffeaa14e), blurRadius: 40)]),
+          borderRadius: BorderRadius.circular(100),
+          boxShadow: const [
+            BoxShadow(color: Color(0xffeaa14e), blurRadius: 40)
+          ],
+        ),
       ),
     );
   }

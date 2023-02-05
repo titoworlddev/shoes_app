@@ -8,6 +8,8 @@ import 'package:shoes_app/src/models/zapato_model.dart';
 import 'package:shoes_app/src/widgets/export_custom_widgets.dart';
 
 class ZapatoDescPage extends StatelessWidget {
+  const ZapatoDescPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     cambiarStatusLight();
@@ -17,14 +19,15 @@ class ZapatoDescPage extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Hero(tag: 'zapato-1', child: ZapatoSizePreview(fullScreen: true)),
+              const Hero(
+                  tag: 'zapato-1', child: ZapatoSizePreview(fullScreen: true)),
               Positioned(
                 top: 40,
                 child: FloatingActionButton(
                   elevation: 0,
                   highlightElevation: 0,
                   backgroundColor: Colors.transparent,
-                  child: Icon(
+                  child: const Icon(
                     Icons.chevron_left,
                     color: Colors.white,
                     size: 60,
@@ -39,10 +42,10 @@ class ZapatoDescPage extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  ZapatoDescripcion(
+                  const ZapatoDescripcion(
                     titulo: 'Nike Air Max 720',
                     descripcion:
                         "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
@@ -64,12 +67,12 @@ class _BotonesLikeCartSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      margin: const EdgeInsets.symmetric(vertical: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _BotonSombreado(
+          const _BotonSombreado(
             Icon(
               Icons.favorite,
               size: 25,
@@ -99,25 +102,23 @@ class _BotonesLikeCartSettings extends StatelessWidget {
 class _BotonSombreado extends StatelessWidget {
   final Icon icon;
 
-  _BotonSombreado(this.icon);
+  const _BotonSombreado(this.icon);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 55,
       width: 55,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            spreadRadius: -5,
-            blurRadius: 20,
-            offset: Offset(0, 10)
-          )
-        ]
-      ),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black12,
+                spreadRadius: -5,
+                blurRadius: 20,
+                offset: Offset(0, 10))
+          ]),
       child: icon,
     );
   }
@@ -127,20 +128,29 @@ class _ColoresYMas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
           Expanded(
             child: Stack(
-              children: [
-                Positioned(left: 90, child: _BotonColor(Color(0xffc6d642), 4, 'verde'),),
-                Positioned(left: 60, child: _BotonColor(Color(0xffffad29), 3, 'amarillo'),),
-                Positioned(left: 30, child: _BotonColor(Color(0xff2099f1), 2, 'azul'),),
+              children: const [
+                Positioned(
+                  left: 90,
+                  child: _BotonColor(Color(0xffc6d642), 4, 'verde'),
+                ),
+                Positioned(
+                  left: 60,
+                  child: _BotonColor(Color(0xffffad29), 3, 'amarillo'),
+                ),
+                Positioned(
+                  left: 30,
+                  child: _BotonColor(Color(0xff2099f1), 2, 'azul'),
+                ),
                 _BotonColor(Color(0xff364d56), 1, 'negro'),
               ],
             ),
           ),
-          BotonNaranja(
+          const BotonNaranja(
             texto: 'More related items',
             alto: 30,
             ancho: 150,
@@ -157,7 +167,7 @@ class _BotonColor extends StatelessWidget {
   final int index;
   final String urlImagen;
 
-  _BotonColor(this.color, this.index, this.urlImagen);
+  const _BotonColor(this.color, this.index, this.urlImagen);
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +175,7 @@ class _BotonColor extends StatelessWidget {
 
     return FadeInLeft(
       delay: Duration(milliseconds: index * 100),
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
       child: GestureDetector(
         onTap: () {
           zapatoModel.assetImage = urlImagen;
@@ -184,20 +194,20 @@ class _MontoYByNow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Container(
-        margin: EdgeInsets.only(top: 20, bottom: 20),
+        margin: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
           children: [
-            Text(
+            const Text(
               '\$ 180.0',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
-            Spacer(),
+            const Spacer(),
             Bounce(
               from: 8,
-              delay: Duration(seconds: 1),
-              child: BotonNaranja(
+              delay: const Duration(seconds: 1),
+              child: const BotonNaranja(
                 texto: 'Buy now',
                 alto: 40,
                 ancho: 120,

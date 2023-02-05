@@ -6,7 +6,8 @@ class BotonNaranja extends StatelessWidget {
   final double ancho;
   final Color color;
 
-  BotonNaranja({
+  const BotonNaranja({
+    super.key,
     required this.texto,
     this.alto = 50,
     this.ancho = 150,
@@ -19,11 +20,11 @@ class BotonNaranja extends StatelessWidget {
       alignment: Alignment.center,
       height: alto,
       width: ancho,
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(100)),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(100)),
       child: Text(
         texto,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
