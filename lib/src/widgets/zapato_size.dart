@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediaquery_sizer/mediaquery_sizer.dart';
 
 import 'package:provider/provider.dart';
 import 'package:shoes_app/src/models/zapato_model.dart';
@@ -29,26 +30,19 @@ class ZapatoSizePreview extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: (fullScreen) ? 5 : 30, vertical: (fullScreen) ? 0 : 5),
         child: Container(
-          // margin: EdgeInsets.only(top: 20),
           width: double.infinity,
-          height: (fullScreen) ? 390 : 420,
+          // height: (fullScreen) ? 49.h(context) : 48.h(context),
           decoration: BoxDecoration(
             color: const Color(0xffffcf53),
-            borderRadius: (!fullScreen)
-                ? BorderRadius.circular(50)
-                : const BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    bottomRight: Radius.circular(50),
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
+            borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
             children: [
               // Zapato con su sombra
               _ZapatoConSombra(),
 
-              if (!fullScreen) _ZapatoTallas()
+              if (!fullScreen) _ZapatoTallas(),
+              if (!fullScreen) const SizedBox(height: 16)
             ],
           ),
         ),
@@ -92,8 +86,8 @@ class _TallaZapatoCaja extends StatelessWidget {
       },
       child: Container(
         alignment: Alignment.center,
-        width: 45,
-        height: 45,
+        width: 42.sp(context),
+        height: 42.sp(context),
         decoration: BoxDecoration(
             color: (numero == zapatoModel.talla)
                 ? const Color(0xffFF9F00)

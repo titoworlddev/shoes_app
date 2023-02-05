@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediaquery_sizer/mediaquery_sizer.dart';
 import 'package:shoes_app/src/helpers/helpers.dart';
 
 import 'package:shoes_app/src/widgets/export_custom_widgets.dart';
@@ -17,8 +18,8 @@ class ZapatoPage extends StatelessWidget {
       body: Column(
         children: [
           const CustomAppBar(texto: 'For you'),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 2.h(context),
           ),
           Expanded(
               child: SingleChildScrollView(

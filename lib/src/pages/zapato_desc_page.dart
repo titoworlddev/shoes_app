@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:mediaquery_sizer/mediaquery_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:shoes_app/src/helpers/helpers.dart';
 import 'package:shoes_app/src/models/zapato_model.dart';
@@ -15,49 +16,54 @@ class ZapatoDescPage extends StatelessWidget {
     cambiarStatusLight();
 
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              const Hero(
-                  tag: 'zapato-1', child: ZapatoSizePreview(fullScreen: true)),
-              Positioned(
-                top: 40,
-                child: FloatingActionButton(
-                  elevation: 0,
-                  highlightElevation: 0,
-                  backgroundColor: Colors.transparent,
-                  child: const Icon(
-                    Icons.chevron_left,
-                    color: Colors.white,
-                    size: 60,
-                  ),
-                  onPressed: () {
-                    cambiarStatusDark();
-                    Navigator.pop(context);
-                  },
+      body: SafeArea(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                const Hero(
+                  tag: 'zapato-1',
+                  child: ZapatoSizePreview(fullScreen: true),
                 ),
-              )
-            ],
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  const ZapatoDescripcion(
-                    titulo: 'Nike Air Max 720',
-                    descripcion:
-                        "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+                Positioned(
+                  top: 1.5.h(context),
+                  left: 2.w(context),
+                  child: FloatingActionButton(
+                    elevation: 0,
+                    highlightElevation: 0,
+                    backgroundColor: Colors.transparent,
+                    child: Icon(
+                      Icons.chevron_left,
+                      color: Colors.white,
+                      size: 60.sp(context),
+                    ),
+                    onPressed: () {
+                      cambiarStatusDark();
+                      Navigator.pop(context);
+                    },
                   ),
-                  _MontoYByNow(),
-                  _ColoresYMas(),
-                  _BotonesLikeCartSettings()
-                ],
+                )
+              ],
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    const ZapatoDescripcion(
+                      titulo: 'Nike Air Max 720',
+                      descripcion:
+                          "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+                    ),
+                    _MontoYByNow(),
+                    _ColoresYMas(),
+                    _BotonesLikeCartSettings()
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -67,29 +73,31 @@ class _BotonesLikeCartSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 30),
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(
+        vertical: 3.h(context),
+        horizontal: 3.w(context),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const _BotonSombreado(
+          _BotonSombreado(
             Icon(
               Icons.favorite,
-              size: 25,
+              size: 25.sp(context),
               color: Colors.red,
             ),
           ),
           _BotonSombreado(
             Icon(
               Icons.add_shopping_cart,
-              size: 25,
+              size: 25.sp(context),
               color: Colors.grey.withOpacity(0.4),
             ),
           ),
           _BotonSombreado(
             Icon(
               Icons.settings,
-              size: 25,
+              size: 25.sp(context),
               color: Colors.grey.withOpacity(0.4),
             ),
           )
@@ -107,18 +115,20 @@ class _BotonSombreado extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
-      width: 55,
+      height: 10.h(context),
+      width: 12.5.w(context),
       decoration: const BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black12,
-                spreadRadius: -5,
-                blurRadius: 20,
-                offset: Offset(0, 10))
-          ]),
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            spreadRadius: -5,
+            blurRadius: 20,
+            offset: Offset(0, 10),
+          )
+        ],
+      ),
       child: icon,
     );
   }
@@ -133,27 +143,25 @@ class _ColoresYMas extends StatelessWidget {
         children: [
           Expanded(
             child: Stack(
-              children: const [
+              children: [
                 Positioned(
-                  left: 90,
-                  child: _BotonColor(Color(0xffc6d642), 4, 'verde'),
+                  left: 24.w(context),
+                  child: const _BotonColor(Color(0xffc6d642), 4, 'verde'),
                 ),
                 Positioned(
-                  left: 60,
-                  child: _BotonColor(Color(0xffffad29), 3, 'amarillo'),
+                  left: 16.w(context),
+                  child: const _BotonColor(Color(0xffffad29), 3, 'amarillo'),
                 ),
                 Positioned(
-                  left: 30,
-                  child: _BotonColor(Color(0xff2099f1), 2, 'azul'),
+                  left: 8.w(context),
+                  child: const _BotonColor(Color(0xff2099f1), 2, 'azul'),
                 ),
-                _BotonColor(Color(0xff364d56), 1, 'negro'),
+                const _BotonColor(Color(0xff364d56), 1, 'negro'),
               ],
             ),
           ),
           const BotonNaranja(
             texto: 'More related items',
-            alto: 30,
-            ancho: 150,
             color: Color(0xffffc675),
           )
         ],
@@ -181,8 +189,8 @@ class _BotonColor extends StatelessWidget {
           zapatoModel.assetImage = urlImagen;
         },
         child: Container(
-          width: 45,
-          height: 45,
+          width: 45.sp(context),
+          height: 45.sp(context),
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
       ),
@@ -209,8 +217,6 @@ class _MontoYByNow extends StatelessWidget {
               delay: const Duration(seconds: 1),
               child: const BotonNaranja(
                 texto: 'Buy now',
-                alto: 40,
-                ancho: 120,
               ),
             )
           ],

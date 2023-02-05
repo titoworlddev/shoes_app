@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediaquery_sizer/mediaquery_sizer.dart';
 import 'package:shoes_app/src/widgets/export_custom_widgets.dart';
 
 class AgregarCarritoBoton extends StatelessWidget {
@@ -15,7 +16,7 @@ class AgregarCarritoBoton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10.0, right: 10, left: 10),
       child: Container(
         width: double.infinity,
-        height: 100,
+        height: 10.h(context),
         decoration: BoxDecoration(
             color: Colors.grey.withOpacity(0.1),
             borderRadius: BorderRadius.circular(100)),
@@ -29,7 +30,11 @@ class AgregarCarritoBoton extends StatelessWidget {
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
-            const BotonNaranja(texto: 'Add to cart'),
+            BotonNaranja(
+              texto: 'Add to cart',
+              alto: 5.h(context),
+              ancho: 35.w(context),
+            ),
             const SizedBox(
               width: 20,
             )
